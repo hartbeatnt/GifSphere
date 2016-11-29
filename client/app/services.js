@@ -1,22 +1,29 @@
 angular.module('services', [])
-.factory('Gifs', function($http){
-  var obj = {}
+.factory('Gifs', function($http, $q){
+  var apiKey = 'dc6zaTOxFJmzC';
+  var obj = {limit:14}
+
   var searchGifs = function(query) {
     var gifArray = [];
-    let limit = 14;
-    $http.get("http://api.giphy.com/v1/gifs/search?q="
-      +query+"&api_key=dc6zaTOxFJmzC&limit="+limit)
-    .then(function(resp){
-      console.log(resp.data.data);
-      return obj.gifArray = resp.data.data;
-    })
+    return $http.get("http://api.giphy.com/v1/gifs/search?q="
+      +query+"&api_key="+apiKey+"&limit="+obj.limit)
   }
+
+  var setArray = function(array) {
+    obj.gifArray=array;
+  }
+
   var showArray=function(){
-    console.log(obj.gifArray)
+    return obj.gifArray;
+  }
+  var showLimit = function(){
+    return obj.limit;
   }
 
   return {
     searchGifs: searchGifs,
-    showArray: showArray
+    showArray: showArray,
+    showLimit: showLimit,
+    setArray: setArray
   }
 })
