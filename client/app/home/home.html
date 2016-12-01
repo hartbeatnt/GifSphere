@@ -1,11 +1,36 @@
 <div class="container">
-  <div class="header">
-    <h1>yooooooooo</h1>
-  </div>
 
-  <form name='input-form' ng-submit='searchGifs()'>
+  <div class="header">
+    <h3>Welcome to</h3>
+    <h1>Gif-Sphere!!!!</h1>
+  </div>
+  </br>
+  <form name='input-form' ng-submit='searchGifs(search)'>
+    <p>we've got gifs here!</p>
     <input name='search' type='text' ng-model='search'
-     placeholder='What gifs do you want?'>
+     placeholder='What gifs do you want?' required>
      <button type='submit'>Let's do it!</button>
   </form>
+
+  <div class='authBar' ng-show="!user">
+    <h4>Like what you see?</h4>
+    Create an account to
+    </br>save your searches!
+    </br>
+    <button ui-sref='login'>login</button>
+    <button ui-sref='register'>register</button>
+  </div>
+
+  <div class='userDetails' ng-hide="!user">
+    <p>Logged in as {{user.username}}.</br>
+      <button ng-click="logOut()">log out</button>
+    </p>
+
+    <h3>Recent Searches:</h3>
+    <ul ng-repeat="recent in recents">
+      <li ng-click="searchGifs(recent)">{{recent}}</li>
+    </ul>
+
+  </div>
+  
 </div>
