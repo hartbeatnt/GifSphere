@@ -1,5 +1,5 @@
 angular.module('home',[])
-.controller('HomeCtrl', function($scope, $state, Gifs, Search){
+.controller('HomeCtrl', function($scope, $state, Gifs){
 
   $scope.searchGifs=function(){
     let query = $scope.query.replace(/\s/g,'+');

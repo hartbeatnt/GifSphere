@@ -10,9 +10,5 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aframe-gif-shader": "^0.2.0",
-    "aframe-look-at-component": "^0.1.2",
-    "mongoose": "^4.7.0",
-    "q": "^1.4.1"
   }
 }
